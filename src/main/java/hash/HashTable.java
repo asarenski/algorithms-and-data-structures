@@ -10,18 +10,21 @@ public class HashTable {
 
     public int get(int key) {
         int hash = (key % TABLE_SIZE);
-        while (table[hash] != null && table[hash].getKey() != key)
+        while (table[hash] != null && table[hash].getKey() != key) {
             hash = (hash + 1) % TABLE_SIZE;
-        if (table[hash] == null)
+        }
+        if (table[hash] == null) {
             return -1;
-        else
+        } else {
             return table[hash].getValue();
+        }
     }
 
     public void put(int key, int value) {
         int hash = (key % TABLE_SIZE);
-        while (table[hash] != null && table[hash].getKey() != key)
+        while (table[hash] != null && table[hash].getKey() != key) {
             hash = (hash + 1) % TABLE_SIZE;
+        }
         table[hash] = new HashEntry(key, value);
     }
 }
