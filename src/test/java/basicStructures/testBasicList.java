@@ -47,7 +47,7 @@ public class testBasicList {
     }
 
     @Test
-    public void testGetIndexOfLastItemReturnsLastItem() throws Exception {
+    public void testGetIndexOfLastItemReturnsIndexOfLastItem() throws Exception {
         final BasicList list1 = new BasicList(3);
         list1.insert(0, 1);
         list1.insert(1, 4);
