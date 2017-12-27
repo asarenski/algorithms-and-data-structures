@@ -16,7 +16,7 @@ public class testBasicList {
     }
 
     @Test
-    public void testInsertBumpsLastValue() throws Exception {
+    public void testInsertBumpsLastValueUpOneIndex() throws Exception {
         final BasicList list = new BasicList(3);
         list.insert(0, 22);
         list.insert(1, 33);
@@ -28,16 +28,28 @@ public class testBasicList {
     }
 
     @Test
-    public void testInsertBumpsLastValueOutOfList() throws Exception {
-        final BasicList list = new BasicList(3);
+    public void testInsertIncreasesMaxSizeIfExceeded() throws Exception {
+        final int initialMaxSize = 3;
+        final BasicList list = new BasicList(initialMaxSize);
         list.insert(0, 22);
         list.insert(1, 33);
-
         list.insert(1, 44);
         list.insert(1, 55);
+
         Assert.assertThat(list.get(0), CoreMatchers.equalTo(22));
         Assert.assertThat(list.get(1), CoreMatchers.equalTo(55));
         Assert.assertThat(list.get(2), CoreMatchers.equalTo(44));
+        Assert.assertThat(list.get(3), CoreMatchers.equalTo(33));
+        Assert.assertThat(list.getMaxSize(), CoreMatchers.equalTo(initialMaxSize + 1));
+    }
+
+    @Test
+    public void testCanInsertAtAnyIndex() throws Exception {
+        final BasicList list = new BasicList(1);
+        final int expectedIndex = 299;
+        list.insert(expectedIndex, 22);
+        Assert.assertThat(list.getIndexOfLastItem(), CoreMatchers.equalTo(expectedIndex));
+        Assert.assertThat(list.getMaxSize(), CoreMatchers.equalTo(expectedIndex + 1));
     }
 
     @Test
@@ -65,16 +77,20 @@ public class testBasicList {
     }
 
     @Test(expected=Exception.class)
-    public void testGetIndexOfLastItemThrowsIfIndexGreaterThanMaxSize() throws Exception {
-        final int maxSize = 5;
-        final BasicList list = new BasicList(maxSize);
-        list.insert(maxSize + 1, 22);
-    }
-
-    @Test(expected=Exception.class)
     public void testGetIndexOfLastItemThrowsIfAccessingNegativeIndexes() throws Exception {
         final int maxSize = 5;
         final BasicList list = new BasicList(maxSize);
         list.insert(-1, 22);
+    }
+
+    @Test
+    public void testToString() throws Exception {
+        final int initialMaxSize = 3;
+        final BasicList list = new BasicList(initialMaxSize);
+        list.insert(0, 22);
+        list.insert(1, 33);
+        list.insert(1, 44);
+        list.insert(1, 55);
+        Assert.assertThat(list.toString(), CoreMatchers.equalTo("array=[22, 55, 44, 33]"));
     }
 }

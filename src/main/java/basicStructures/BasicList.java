@@ -1,5 +1,7 @@
 package basicStructures;
 
+import java.util.Arrays;
+
 public class BasicList {
     Integer[] array;
     int maxSize;
@@ -9,27 +11,22 @@ public class BasicList {
         array = new Integer[maxSize];
     }
 
-    public BasicList() {
-        this.maxSize = 100;
-        array = new Integer[maxSize];
-    }
-
-    public int getMaxSize() {
-        return maxSize;
-    }
-
     public int get(int index) {
         return array[index];
     }
 
     public int insert(int index, int integer) {
+        if (index > maxSize - 1) {
+            resizeArray(index + 1);
+        }
+
         final int indexOfLastItem = getIndexOfLastItem();
         if (indexOfLastItem == -1) {
             array[index] = integer;
         } else {
             for (int i=indexOfLastItem; i >= index; i--) {
-                if (i+1 == maxSize) {
-                    continue;
+                if (i + 1 > maxSize - 1) {
+                    resizeArray(i + 2);
                 }
                 array[i+1] = array[i];
             }
@@ -37,6 +34,15 @@ public class BasicList {
         }
 
         return index;
+    }
+
+    private void resizeArray(int newMaxSize) {
+        final Integer[] arrayCopy = new Integer[newMaxSize];
+        for (int i=0; i<maxSize; i++) {
+            arrayCopy[i] = array[i];
+        }
+        this.maxSize = newMaxSize;
+        this.array = arrayCopy;
     }
 
     public int getIndexOfLastItem() {
@@ -47,5 +53,23 @@ public class BasicList {
         }
 
         return -1;
+    }
+
+    public int getMaxSize() {
+        return maxSize;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder printed = new StringBuilder();
+        printed.append("array=[");
+        for (int i=0; i<maxSize; i++) {
+            printed.append(array[i]);
+            if (i != maxSize - 1) {
+                printed.append(", ");
+            }
+        }
+        printed.append("]");
+        return printed.toString();
     }
 }
