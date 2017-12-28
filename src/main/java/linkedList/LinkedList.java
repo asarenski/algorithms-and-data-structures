@@ -28,10 +28,6 @@ public class LinkedList {
             throw new IndexOutOfBoundsException("Cannot use negative indexes.");
         }
 
-        if (first == null) {
-            return null;
-        }
-
         Node checked = first;
         while (Objects.nonNull(checked)) {
             if (checked.getPosition() - 1 == index) {
