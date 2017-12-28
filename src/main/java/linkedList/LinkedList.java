@@ -8,8 +8,7 @@ public class LinkedList {
     }
 
     public Node add(Integer val) {
-        Node added = new Node(val, first);
-        first = added;
+        first = new Node(val, first);
         return first;
     }
 

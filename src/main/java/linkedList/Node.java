@@ -2,22 +2,22 @@ package linkedList;
 
 public class Node {
     private Integer value;
-    private Node nextVal;
+    private Node next;
 
     public Node(Integer value) {
-        this.value = value;
+        this(value, null);
     }
 
-    public Node(Integer value, Node nextVal) {
+    public Node(Integer value, Node next) {
         this.value = value;
-        this.nextVal = nextVal;
+        this.next = next;
     }
 
     public Integer getValue() {
         return value;
     }
 
-    public Node getNextVal() {
-        return nextVal;
+    public Node getNext() {
+        return next;
     }
 }
