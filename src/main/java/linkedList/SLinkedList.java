@@ -2,20 +2,20 @@ package linkedList;
 
 import java.util.Objects;
 
-public class LinkedList {
-    private Node first;
+public class SLinkedList {
+    private SLinkedNode first;
     private Integer length = 0;
 
-    public LinkedList() {
+    public SLinkedList() {
         first = null;
     }
 
-    public Node add(Integer val) {
-        first = new Node(val, first, ++length);
+    public SLinkedNode add(Integer val) {
+        first = new SLinkedNode(val, first, ++length);
         return first;
     }
 
-    public Node getFirst() {
+    public SLinkedNode getFirst() {
         return first;
     }
 
@@ -23,12 +23,12 @@ public class LinkedList {
         return length;
     }
 
-    public Node findItemAtIndex(Integer index) throws IndexOutOfBoundsException {
+    public SLinkedNode findItemAtIndex(Integer index) throws IndexOutOfBoundsException {
         if (index < 0) {
             throw new IndexOutOfBoundsException("Cannot use negative indexes.");
         }
 
-        Node checked = first;
+        SLinkedNode checked = first;
         while (Objects.nonNull(checked)) {
             if (checked.getPosition() - 1 == index) {
                 return checked;

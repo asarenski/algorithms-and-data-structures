@@ -2,12 +2,12 @@ package linkedList;
 
 import com.google.common.base.Objects;
 
-public class Node {
+public class SLinkedNode {
     private Integer value;
-    private Node next;
+    private SLinkedNode next;
     private Integer position;
 
-    public Node(Integer value, Node next, Integer position) {
+    public SLinkedNode(Integer value, SLinkedNode next, Integer position) {
         this.value = value;
         this.next = next;
         this.position = position;
@@ -17,7 +17,7 @@ public class Node {
         return value;
     }
 
-    public Node getNext() {
+    public SLinkedNode getNext() {
         return next;
     }
 
@@ -29,10 +29,10 @@ public class Node {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Node node = (Node) o;
-        return Objects.equal(value, node.value) &&
-                Objects.equal(next, node.next) &&
-                Objects.equal(position, node.position);
+        SLinkedNode SLinkedNode = (SLinkedNode) o;
+        return Objects.equal(value, SLinkedNode.value) &&
+                Objects.equal(next, SLinkedNode.next) &&
+                Objects.equal(position, SLinkedNode.position);
     }
 
     @Override

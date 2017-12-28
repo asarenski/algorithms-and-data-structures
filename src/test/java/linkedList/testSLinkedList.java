@@ -4,23 +4,23 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class testLinkedList {
+public class testSLinkedList {
 
     @Test
     public void testDefaultConstructorForNode() throws Exception {
-        Node node = new Node(5, null, null);
-        Assert.assertThat(node.getValue(), CoreMatchers.equalTo(5));
-        Assert.assertThat(node.getNext(), CoreMatchers.nullValue());
+        SLinkedNode SLinkedNode = new SLinkedNode(5, null, null);
+        Assert.assertThat(SLinkedNode.getValue(), CoreMatchers.equalTo(5));
+        Assert.assertThat(SLinkedNode.getNext(), CoreMatchers.nullValue());
     }
 
     @Test
     public void testAdd() {
-        LinkedList list = new LinkedList();
+        SLinkedList list = new SLinkedList();
         list.add(15);
         list.add(14);
         list.add(13);
 
-        Node nextval;
+        SLinkedNode nextval;
         nextval = list.getFirst();
         Assert.assertThat(nextval.getValue(), CoreMatchers.equalTo(13));
 
@@ -36,27 +36,27 @@ public class testLinkedList {
 
     @Test
     public void testFindAtIndex() throws Exception {
-        LinkedList list = new LinkedList();
+        SLinkedList list = new SLinkedList();
         Assert.assertThat(list.findItemAtIndex(120), CoreMatchers.nullValue());
 
         Integer expectedLastIndex = 5;
-        Node expectedLastNode = null;
+        SLinkedNode expectedLastSLinkedNode = null;
         Integer mockValue = 15;
         for (int i=0; i < expectedLastIndex + 1; i++) {
-            Node addedNode = list.add(i);
+            SLinkedNode addedSLinkedNode = list.add(i);
             if (i == expectedLastIndex) {
-                expectedLastNode = addedNode;
+                expectedLastSLinkedNode = addedSLinkedNode;
             }
             mockValue--;
         }
 
         Assert.assertThat(list.size(), CoreMatchers.equalTo(6));
-        Assert.assertThat(list.findItemAtIndex(5), CoreMatchers.equalTo(expectedLastNode));
+        Assert.assertThat(list.findItemAtIndex(5), CoreMatchers.equalTo(expectedLastSLinkedNode));
     }
 
     @Test
     public void testFindAtIndexReturnNullIfOutsideLength() throws Exception {
-        LinkedList list = new LinkedList();
+        SLinkedList list = new SLinkedList();
 
         Integer expectedLastIndex = 5;
         for (int i=0; i < expectedLastIndex + 1; i++) {
@@ -68,7 +68,7 @@ public class testLinkedList {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testFindAtIndexThrowsWithNegative() throws Exception {
-        LinkedList list = new LinkedList();
+        SLinkedList list = new SLinkedList();
         list.findItemAtIndex(-5);
     }
 }
