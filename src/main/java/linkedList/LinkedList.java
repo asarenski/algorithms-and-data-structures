@@ -23,7 +23,7 @@ public class LinkedList {
         return length;
     }
 
-    public Node findItemAtIndex(Integer index) throws Exception {
+    public Node findItemAtIndex(Integer index) throws IndexOutOfBoundsException {
         if (index < 0) {
             throw new IndexOutOfBoundsException("Cannot use negative indexes.");
         }
