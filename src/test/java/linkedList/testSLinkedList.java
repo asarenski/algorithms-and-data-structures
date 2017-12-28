@@ -15,43 +15,34 @@ public class testSLinkedList {
 
     @Test
     public void testAdd() {
-        SLinkedList list = new SLinkedList();
-        list.add(15);
-        list.add(14);
-        list.add(13);
-
-        SLinkedNode nextval;
-        nextval = list.getFirst();
-        Assert.assertThat(nextval.getValue(), CoreMatchers.equalTo(13));
-
-        nextval = nextval.getNext();
-        Assert.assertThat(nextval.getValue(), CoreMatchers.equalTo(14));
-
-        nextval = nextval.getNext();
-        Assert.assertThat(nextval.getValue(), CoreMatchers.equalTo(15));
-
-        nextval = nextval.getNext();
-        Assert.assertThat(nextval, CoreMatchers.nullValue());
+        final SLinkedList list = new SLinkedList();
+        int countDown = 15;
+        for (int i=0; i<countDown; i++) {
+            list.add(countDown);
+            Assert.assertThat(list.getFirstValue(), CoreMatchers.equalTo(countDown));
+            Assert.assertThat(list.size(), CoreMatchers.equalTo(i+1));
+            countDown--;
+        }
     }
 
     @Test
     public void testFindAtIndex() throws Exception {
         SLinkedList list = new SLinkedList();
-        Assert.assertThat(list.findItemAtIndex(120), CoreMatchers.nullValue());
+        Assert.assertThat(list.findValueAtIndex(120), CoreMatchers.nullValue());
 
         Integer expectedLastIndex = 5;
-        SLinkedNode expectedLastSLinkedNode = null;
+        Integer expectedLastSLinkValue = null;
         Integer mockValue = 15;
         for (int i=0; i < expectedLastIndex + 1; i++) {
-            SLinkedNode addedSLinkedNode = list.add(i);
+            Integer addedSLinkedNode = list.add(i);
             if (i == expectedLastIndex) {
-                expectedLastSLinkedNode = addedSLinkedNode;
+                expectedLastSLinkValue = addedSLinkedNode;
             }
             mockValue--;
         }
 
         Assert.assertThat(list.size(), CoreMatchers.equalTo(6));
-        Assert.assertThat(list.findItemAtIndex(5), CoreMatchers.equalTo(expectedLastSLinkedNode));
+        Assert.assertThat(list.findValueAtIndex(5), CoreMatchers.equalTo(expectedLastSLinkValue));
     }
 
     @Test
@@ -63,12 +54,12 @@ public class testSLinkedList {
             list.add(i);
         }
 
-        Assert.assertThat(list.findItemAtIndex(expectedLastIndex + 20), CoreMatchers.nullValue());
+        Assert.assertThat(list.findValueAtIndex(expectedLastIndex + 20), CoreMatchers.nullValue());
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testFindAtIndexThrowsWithNegative() throws Exception {
         SLinkedList list = new SLinkedList();
-        list.findItemAtIndex(-5);
+        list.findValueAtIndex(-5);
     }
 }

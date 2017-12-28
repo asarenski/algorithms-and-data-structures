@@ -3,35 +3,35 @@ package linkedList;
 import java.util.Objects;
 
 public class SLinkedList {
-    private SLinkedNode first;
+    private SLinkedNode head;
     private Integer length = 0;
 
     public SLinkedList() {
-        first = null;
+        head = null;
     }
 
-    public SLinkedNode add(Integer val) {
-        first = new SLinkedNode(val, first, ++length);
-        return first;
-    }
-
-    public SLinkedNode getFirst() {
-        return first;
+    public Integer add(Integer val) {
+        head = new SLinkedNode(val, head, ++length);
+        return head.getValue();
     }
 
     public Integer size() {
         return length;
     }
 
-    public SLinkedNode findItemAtIndex(Integer index) throws IndexOutOfBoundsException {
+    public Integer getFirstValue() {
+        return head.getValue();
+    }
+
+    public Integer findValueAtIndex(Integer index) throws IndexOutOfBoundsException {
         if (index < 0) {
             throw new IndexOutOfBoundsException("Cannot use negative indexes.");
         }
 
-        SLinkedNode checked = first;
+        SLinkedNode checked = head;
         while (Objects.nonNull(checked)) {
             if (checked.getPosition() - 1 == index) {
-                return checked;
+                return checked.getValue();
             }
             checked = checked.getNext();
         }
