@@ -1,7 +1,5 @@
 package basicStructures;
 
-import java.util.Arrays;
-
 public class BasicList {
     Integer[] array;
     int maxSize;
