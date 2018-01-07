@@ -9,7 +9,7 @@ public class BinarySearch {
 
         while (high >= low) {
             final Integer mid = (high + low) / 2;
-            if (list.get(mid) == desiredNum) {
+            if (list.get(mid).equals(desiredNum)) {
                 return true;
             } else if (list.get(mid) > desiredNum) {
                 high = mid - 1;

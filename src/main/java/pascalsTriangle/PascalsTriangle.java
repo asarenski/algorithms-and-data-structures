@@ -8,11 +8,11 @@ public class PascalsTriangle {
         this.magnitude = magnitude;
         this.tree = new Integer[magnitude][];
 
-        for (Integer i = 0; i < magnitude; i++) {
+        for (int i = 0; i < magnitude; i++) {
             this.tree[i] = new Integer[i + 1];
             this.tree[i][0] = 1;
 
-            for (Integer j = 1; j < i; j++) {
+            for (int j = 1; j < i; j++) {
                 this.tree[i][j] = this.tree[i - 1][j - 1] + this.tree[i - 1][j];
             }
             this.tree[i][i] = 1;
@@ -28,8 +28,8 @@ public class PascalsTriangle {
     }
 
     public void printTriangle() {
-        for (Integer i = 0; i < this.magnitude; i++) {
-            for (Integer j = 0; j < i + 1; j++) {
+        for (int i = 0; i < this.magnitude; i++) {
+            for (int j = 0; j < i + 1; j++) {
                 System.out.print(this.tree[i][j] + " ");
             }
             System.out.println("");
