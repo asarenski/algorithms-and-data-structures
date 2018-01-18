@@ -1,4 +1,4 @@
-package Primes;
+package primes;
 
 import com.google.common.collect.Maps;
 import org.hamcrest.CoreMatchers;

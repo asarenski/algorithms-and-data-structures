@@ -1,4 +1,4 @@
-package Primes;
+package primes;
 
 public class Primes {
     public static Boolean isPrime(Integer possiblePrime) throws Exception {
