@@ -1,10 +1,10 @@
 package basicStructures;
 
-public class BasicList {
+public class ArrayList {
     Integer[] array;
     int maxSize;
 
-    public BasicList(int maxSize) {
+    public ArrayList(int maxSize) {
         this.maxSize = maxSize;
         array = new Integer[maxSize];
     }
@@ -13,12 +13,12 @@ public class BasicList {
         return array[index];
     }
 
-    public int insert(int index, int integer) {
+    public int putAtIndex(int index, int integer) {
         if (index > maxSize - 1) {
             resizeArray(index + 1);
         }
 
-        final int indexOfLastItem = getIndexOfLastItem();
+        final int indexOfLastItem = getIndexOfLast();
         if (indexOfLastItem == -1) {
             array[index] = integer;
         } else {
@@ -43,7 +43,7 @@ public class BasicList {
         this.array = arrayCopy;
     }
 
-    public int getIndexOfLastItem() {
+    public int getIndexOfLast() {
         for (int i=maxSize-1; i >= 0; i--) {
             if (array[i] != null) {
                 return i;
