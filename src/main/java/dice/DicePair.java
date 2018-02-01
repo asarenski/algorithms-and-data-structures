@@ -2,6 +2,7 @@ package dice;
 
 import com.google.common.collect.Lists;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DicePair {
@@ -22,8 +23,16 @@ public class DicePair {
                 .sum();
     }
 
-    public List<Tuple> generateAllPossibleCombinations(int value) {
-        return null;
+    public List<Tuple<Integer, Integer>> generateCombinationsForValue(int value) {
+        List<Tuple<Integer, Integer>> combinations = new ArrayList<>();
+        for (int i=1; i<sidesPerDie+1; i++) {
+            for(int j=1; j<sidesPerDie+1; j++) {
+                if (i + j == value) {
+                    combinations.add(new Tuple<>(i, j));
+                }
+            }
+        }
+        return combinations;
     }
 
     public int getSidesPerDie() {
