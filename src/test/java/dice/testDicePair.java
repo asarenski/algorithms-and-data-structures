@@ -8,11 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class testDicePair {
-    @Test
-    public void rollAlwaysOutputsInRange2To12() throws Exception {
-        final int least = 2;
-        final int greatest = 12;
+    private static final int least = 2;
+    private static final int greatest = 12;
 
+    @Test
+    public void rollAlwaysOutputsInRange2To12For6sided() throws Exception {
         DicePair dice = new DicePair(6);
         Map<Integer, Integer> count = new HashMap<>();
         for (int i=0; i<500; i++) {
@@ -26,5 +26,10 @@ public class testDicePair {
         for (Integer i=least; i<greatest + 1; i++) {
             Assert.assertThat(count.get(i), Matchers.greaterThan(0));
         }
+    }
+
+    @Test
+    public void testGenerateAllPossibleCombinationsFor6sided() throws Exception {
+        DicePair dice = new DicePair(6);
     }
 }

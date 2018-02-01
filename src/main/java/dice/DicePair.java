@@ -6,9 +6,11 @@ import java.util.List;
 
 public class DicePair {
     private static final int numberOfDice = 2;
+    private int sidesPerDie = 6;
     private List<Die> dice = Lists.newArrayList();
 
     public DicePair(int sidesPerDie) {
+        this.sidesPerDie = sidesPerDie;
         for (int i=0; i < numberOfDice; i++) {
             dice.add(new Die(sidesPerDie));
         }
@@ -18,5 +20,13 @@ public class DicePair {
         return dice.stream()
                 .mapToInt(Die::roll)
                 .sum();
+    }
+
+    public List<Tuple> generateAllPossibleCombinations() {
+
+    }
+
+    public int getSidesPerDie() {
+        return sidesPerDie;
     }
 }
