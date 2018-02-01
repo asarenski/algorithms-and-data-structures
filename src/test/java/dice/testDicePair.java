@@ -1,10 +1,12 @@
 package dice;
 
+import com.google.common.collect.Lists;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class testDicePair {
@@ -31,5 +33,9 @@ public class testDicePair {
     @Test
     public void testGenerateAllPossibleCombinationsFor6sided() throws Exception {
         DicePair dice = new DicePair(6);
+        final List<Tuple> expectedForValue2 = Lists.newArrayList(
+                new Tuple<>(1, 1)
+        );
+        Assert.assertEquals(dice.generateAllPossibleCombinations(2), expectedForValue2);
     }
 }

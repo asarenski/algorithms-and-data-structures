@@ -22,8 +22,8 @@ public class DicePair {
                 .sum();
     }
 
-    public List<Tuple> generateAllPossibleCombinations() {
-
+    public List<Tuple> generateAllPossibleCombinations(int value) {
+        return null;
     }
 
     public int getSidesPerDie() {
