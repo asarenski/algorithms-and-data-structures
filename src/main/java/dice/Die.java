@@ -9,10 +9,6 @@ public class Die {
         this.sides = sides;
     }
 
-    public int getSides() {
-        return sides;
-    }
-
     public int roll() {
         return MathUtil.randomBetweenOneAndMax(sides);
     }
