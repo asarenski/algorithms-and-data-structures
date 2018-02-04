@@ -21,4 +21,14 @@ public class DiceOddsFixture {
         map.put(6, 1d / 9d);
         return map;
     }
+
+    public static Map<Integer, String> mapForThreeSidedAsFractions() {
+        Map<Integer, String> map = new HashMap<>();
+        map.put(2, "1 / 9");
+        map.put(3, "2 / 9");
+        map.put(4, "1 / 3");
+        map.put(5, "2 / 9");
+        map.put(6, "1 / 9");
+        return map;
+    }
 }
