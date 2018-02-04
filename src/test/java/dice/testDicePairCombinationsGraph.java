@@ -24,7 +24,7 @@ public class testDicePairCombinationsGraph {
         dicePairCombinationsGraph.generatePossibleCombinations();
 
         int testValue = dice.getLeast();
-        while(testValue < dice.getGreatest() + 1) {
+        while (testValue < dice.getGreatest() + 1) {
             Mockito.verify(dicePairCombinationsGraph).generateCombinationsForValue(testValue);
             testValue++;
         }

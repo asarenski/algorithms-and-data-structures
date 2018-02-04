@@ -76,7 +76,7 @@ public class testArrayList {
         Assert.assertThat(list.getIndexOfLast(), CoreMatchers.equalTo(expectedIndex));
     }
 
-    @Test(expected=Exception.class)
+    @Test(expected = Exception.class)
     public void testGetIndexOfLastItemThrowsIfAccessingNegativeIndexes() throws Exception {
         final int maxSize = 5;
         final ArrayList list = new ArrayList(maxSize);

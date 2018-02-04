@@ -16,7 +16,7 @@ public class DicePair {
 
     public DicePair(int sidesPerDie, int numberOfDice) {
         this.sidesPerDie = sidesPerDie;
-        for (int i=0; i < numberOfDice; i++) {
+        for (int i = 0; i < numberOfDice; i++) {
             dice.add(new Die(sidesPerDie));
         }
         this.least = numberOfDice;

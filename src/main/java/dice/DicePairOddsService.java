@@ -31,7 +31,7 @@ public class DicePairOddsService {
     }
 
     public double calculateOdds(int numberOfCombinations) {
-        return numberOfCombinations / ( Math.pow( (double)dice.getSidesPerDie(), 2) );
+        return numberOfCombinations / (Math.pow((double) dice.getSidesPerDie(), 2));
     }
 
     public double calculateBaseOdds() {

@@ -17,10 +17,10 @@ public class testSLinkedList {
     public void testAdd() {
         final SLinkedList list = new SLinkedList();
         int countDown = 15;
-        for (int i=0; i<countDown; i++) {
+        for (int i = 0; i < countDown; i++) {
             list.add(countDown);
             Assert.assertThat(list.getFirstValue(), CoreMatchers.equalTo(countDown));
-            Assert.assertThat(list.size(), CoreMatchers.equalTo(i+1));
+            Assert.assertThat(list.size(), CoreMatchers.equalTo(i + 1));
             countDown--;
         }
     }
@@ -33,7 +33,7 @@ public class testSLinkedList {
         Integer expectedLastIndex = 5;
         Integer expectedLastSLinkValue = null;
         Integer mockValue = 15;
-        for (int i=0; i < expectedLastIndex + 1; i++) {
+        for (int i = 0; i < expectedLastIndex + 1; i++) {
             Integer addedSLinkedNode = list.add(i);
             if (i == expectedLastIndex) {
                 expectedLastSLinkValue = addedSLinkedNode;
@@ -50,7 +50,7 @@ public class testSLinkedList {
         SLinkedList list = new SLinkedList();
 
         Integer expectedLastIndex = 5;
-        for (int i=0; i < expectedLastIndex + 1; i++) {
+        for (int i = 0; i < expectedLastIndex + 1; i++) {
             list.add(i);
         }
 

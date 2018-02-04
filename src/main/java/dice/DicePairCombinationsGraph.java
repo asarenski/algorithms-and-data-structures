@@ -16,7 +16,7 @@ public class DicePairCombinationsGraph {
 
     public Map<Integer, List<Tuple<Integer, Integer>>> generatePossibleCombinations() {
         Map<Integer, List<Tuple<Integer, Integer>>> possibleCombinations = new HashMap<>();
-        for (int i=dicePair.getLeast(); i<dicePair.getGreatest()+1; i++) {
+        for (int i = dicePair.getLeast(); i < dicePair.getGreatest() + 1; i++) {
             possibleCombinations.put(i, generateCombinationsForValue(i));
         }
         return possibleCombinations;
@@ -24,8 +24,8 @@ public class DicePairCombinationsGraph {
 
     public List<Tuple<Integer, Integer>> generateCombinationsForValue(int value) {
         List<Tuple<Integer, Integer>> combinations = new ArrayList<>();
-        for (int i=1; i<dicePair.getSidesPerDie()+1; i++) {
-            for(int j=1; j<dicePair.getSidesPerDie()+1; j++) {
+        for (int i = 1; i < dicePair.getSidesPerDie() + 1; i++) {
+            for (int j = 1; j < dicePair.getSidesPerDie() + 1; j++) {
                 if (i + j == value) {
                     combinations.add(new Tuple<>(i, j));
                 }
