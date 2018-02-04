@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.util.HashMap;
 import java.util.List;
@@ -61,5 +62,17 @@ public class testDicePair {
                 new Tuple<>(6, 1)
         );
         Assert.assertEquals(dice.generateCombinationsForValue(7), expectedFor7);
+    }
+
+    @Test
+    public void testGeneratePossibleCombinations() throws Exception {
+        DicePair dice = Mockito.spy(new DicePair(6));
+        dice.generatePossibleCombinations();
+
+        int testValue = dice.getLeast();
+        while(testValue < dice.getGreatest() + 1) {
+            Mockito.verify(dice).generateCombinationsForValue(testValue);
+            testValue++;
+        }
     }
 }
