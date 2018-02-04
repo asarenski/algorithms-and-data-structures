@@ -34,6 +34,14 @@ public class DicePairGraph {
         return possibleCombinations;
     }
 
+    public DicePair getDicePair() {
+        return dicePair;
+    }
+
+    public Map<Integer, List<Tuple<Integer, Integer>>> getPossibleCombinations() {
+        return possibleCombinations;
+    }
+
     @Override
     public String toString() {
         return "DicePairGraph{" +
