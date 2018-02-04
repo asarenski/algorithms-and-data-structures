@@ -2,10 +2,7 @@ package dice;
 
 import com.google.common.collect.Lists;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class DicePair {
     private final List<Die> dice = Lists.newArrayList();
@@ -30,26 +27,6 @@ public class DicePair {
         return dice.stream()
                 .mapToInt(Die::roll)
                 .sum();
-    }
-
-    public List<Tuple<Integer, Integer>> generateCombinationsForValue(int value) {
-        List<Tuple<Integer, Integer>> combinations = new ArrayList<>();
-        for (int i=1; i<sidesPerDie+1; i++) {
-            for(int j=1; j<sidesPerDie+1; j++) {
-                if (i + j == value) {
-                    combinations.add(new Tuple<>(i, j));
-                }
-            }
-        }
-        return combinations;
-    }
-
-    public Map<Integer, List<Tuple<Integer, Integer>>> generatePossibleCombinations() {
-        Map<Integer, List<Tuple<Integer, Integer>>> possibleCombinations = new HashMap<>();
-        for (int i=least; i<greatest+1; i++) {
-            possibleCombinations.put(i, generateCombinationsForValue(i));
-        }
-        return possibleCombinations;
     }
 
     public int getSidesPerDie() {
