@@ -1,16 +1,16 @@
 package primes;
 
-import com.google.common.collect.Maps;
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class testPrimes {
 
-    private Map<Integer, Boolean> map = Maps.newHashMap();
+    private Map<Integer, Boolean> map = new HashMap<>();
 
     @Before
     public void setUp() throws Exception {

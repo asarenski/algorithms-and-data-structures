@@ -1,11 +1,10 @@
 package dice;
 
-import com.google.common.collect.Lists;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class DicePair {
-    private final List<Die> dice = Lists.newArrayList();
+    private final List<Die> dice = new ArrayList<>();
     private int least;
     private int greatest;
     private int sidesPerDie;

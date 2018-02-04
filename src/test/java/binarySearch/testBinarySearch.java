@@ -1,6 +1,5 @@
 package binarySearch;
 
-import com.google.common.collect.Lists;
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class testBinarySearch {
-    final private List<Integer> testList = Lists.newArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    final private List<Integer> testList = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
     @Test
     public void isIncludedInListTrue() throws Exception {
