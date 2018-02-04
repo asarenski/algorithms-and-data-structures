@@ -7,11 +7,10 @@ import java.util.Map;
 
 public class DicePairCombinationsGraph {
     private DicePair dicePair;
-    private Map<Integer, List<Tuple<Integer, Integer>>> possibleCombinations = new HashMap<>();
+    private Map<Integer, List<Tuple<Integer, Integer>>> possibleCombinations;
 
     public DicePairCombinationsGraph(DicePair dicePair) {
         this.dicePair = dicePair;
-        this.possibleCombinations = generatePossibleCombinations();
     }
 
     public Map<Integer, List<Tuple<Integer, Integer>>> generatePossibleCombinations() {
@@ -39,6 +38,6 @@ public class DicePairCombinationsGraph {
     }
 
     public Map<Integer, List<Tuple<Integer, Integer>>> getPossibleCombinations() {
-        return possibleCombinations;
+        return possibleCombinations == null ? this.possibleCombinations = generatePossibleCombinations() : possibleCombinations;
     }
 }
