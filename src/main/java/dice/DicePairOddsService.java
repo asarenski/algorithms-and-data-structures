@@ -2,8 +2,8 @@ package dice;
 
 import org.apache.commons.math3.fraction.Fraction;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class DicePairOddsService {
     private DicePairCombinationsGraph graph;
@@ -15,19 +15,19 @@ public class DicePairOddsService {
     }
 
     public Map<Integer, Double> generateDicePairOdds() {
-        Map<Integer, Double> odds = new HashMap<>();
-        graph.getPossibleCombinations().forEach((integer, tuples) -> {
-            odds.put(integer, calculateOdds(tuples.size()));
-        });
-        return odds;
+        return graph.getPossibleCombinations().entrySet().stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        tuples -> calculateOdds(tuples.getValue().size())
+                ));
     }
 
     public Map<Integer, String> generateDicePairOddsWithFractions() {
-        Map<Integer, String> odds = new HashMap<>();
-        graph.getPossibleCombinations().forEach((integer, tuples) -> {
-            odds.put(integer, new Fraction(calculateOdds(tuples.size())).toString());
-        });
-        return odds;
+        return graph.getPossibleCombinations().entrySet().stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        tuples -> new Fraction(calculateOdds(tuples.getValue().size())).toString()
+                ));
     }
 
     public double calculateOdds(int numberOfCombinations) {
