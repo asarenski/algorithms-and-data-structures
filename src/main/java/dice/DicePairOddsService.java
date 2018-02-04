@@ -18,7 +18,7 @@ public class DicePairOddsService {
         return graph.getPossibleCombinations().entrySet().stream()
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,
-                        tuples -> calculateOdds(tuples.getValue().size())
+                        tupleEntry -> calculateOdds(tupleEntry.getValue().size())
                 ));
     }
 
@@ -26,7 +26,7 @@ public class DicePairOddsService {
         return graph.getPossibleCombinations().entrySet().stream()
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,
-                        tuples -> new Fraction(calculateOdds(tuples.getValue().size())).toString()
+                        tupleEntry -> new Fraction(calculateOdds(tupleEntry.getValue().size())).toString()
                 ));
     }
 
