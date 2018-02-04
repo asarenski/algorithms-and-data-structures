@@ -1,4 +1,4 @@
-package Fixtures;
+package fixtures;
 
 import com.google.common.collect.Lists;
 import dice.Tuple;

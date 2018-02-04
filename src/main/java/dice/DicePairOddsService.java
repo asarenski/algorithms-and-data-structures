@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DicePairOddsService {
-    private DicePairGraph graph;
+    private DicePairCombinationsGraph graph;
     private DicePair dice;
 
-    public DicePairOddsService(DicePairGraph graph) {
+    public DicePairOddsService(DicePairCombinationsGraph graph) {
         this.graph = graph;
         this.dice = graph.getDicePair();
     }

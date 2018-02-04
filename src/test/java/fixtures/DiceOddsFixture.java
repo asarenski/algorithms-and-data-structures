@@ -1,4 +1,4 @@
-package Fixtures;
+package fixtures;
 
 import java.util.HashMap;
 import java.util.Map;

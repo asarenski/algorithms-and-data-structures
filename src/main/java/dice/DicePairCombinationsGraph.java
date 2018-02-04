@@ -5,13 +5,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DicePairGraph {
+public class DicePairCombinationsGraph {
     private DicePair dicePair;
     private Map<Integer, List<Tuple<Integer, Integer>>> possibleCombinations = new HashMap<>();
 
-    public DicePairGraph(DicePair dicePair) {
+    public DicePairCombinationsGraph(DicePair dicePair) {
         this.dicePair = dicePair;
         this.possibleCombinations = generatePossibleCombinations();
+    }
+
+    public Map<Integer, List<Tuple<Integer, Integer>>> generatePossibleCombinations() {
+        Map<Integer, List<Tuple<Integer, Integer>>> possibleCombinations = new HashMap<>();
+        for (int i=dicePair.getLeast(); i<dicePair.getGreatest()+1; i++) {
+            possibleCombinations.put(i, generateCombinationsForValue(i));
+        }
+        return possibleCombinations;
     }
 
     public List<Tuple<Integer, Integer>> generateCombinationsForValue(int value) {
@@ -26,26 +34,11 @@ public class DicePairGraph {
         return combinations;
     }
 
-    public Map<Integer, List<Tuple<Integer, Integer>>> generatePossibleCombinations() {
-        Map<Integer, List<Tuple<Integer, Integer>>> possibleCombinations = new HashMap<>();
-        for (int i=dicePair.getLeast(); i<dicePair.getGreatest()+1; i++) {
-            possibleCombinations.put(i, generateCombinationsForValue(i));
-        }
-        return possibleCombinations;
-    }
-
     public DicePair getDicePair() {
         return dicePair;
     }
 
     public Map<Integer, List<Tuple<Integer, Integer>>> getPossibleCombinations() {
         return possibleCombinations;
-    }
-
-    @Override
-    public String toString() {
-        return "DicePairGraph{" +
-                "possibleCombinations=" + possibleCombinations +
-                '}';
     }
 }
