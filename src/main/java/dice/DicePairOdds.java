@@ -5,11 +5,11 @@ import org.apache.commons.math3.fraction.Fraction;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class DicePairOddsService {
+public class DicePairOdds {
     private DicePairCombinationsGraph graph;
     private DicePair dice;
 
-    public DicePairOddsService(DicePairCombinationsGraph graph) {
+    public DicePairOdds(DicePairCombinationsGraph graph) {
         this.graph = graph;
         this.dice = graph.getDicePair();
     }
@@ -38,4 +38,7 @@ public class DicePairOddsService {
         return calculateOdds(1);
     }
 
+    public DicePair getDice() {
+        return dice;
+    }
 }
