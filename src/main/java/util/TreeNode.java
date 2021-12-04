@@ -4,6 +4,7 @@ public class TreeNode<T> extends NodeImpl<T> {
     private TreeNode<T> left;
     private TreeNode<T> right;
     private Integer level = 0;
+    private TreeNode<T> parent;
 
     public TreeNode(T value) {
         super(value);
@@ -33,5 +34,13 @@ public class TreeNode<T> extends NodeImpl<T> {
 
     public void setLevel(Integer level) {
         this.level = level;
+    }
+
+    public TreeNode<T> getParent() {
+        return parent;
+    }
+
+    public void setParent(TreeNode<T> parent) {
+        this.parent = parent;
     }
 }
