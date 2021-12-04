@@ -20,7 +20,7 @@ public class BSTree<T extends Comparable<T>> {
     public BSTree<T> fromList(List<T> list) {
         Integer start = 0;
         Integer end = list.size() - 1;
-        Integer mid = (end - start) / 2 + start;
+        Integer mid = (end + start) / 2;
         TreeNode<T> root = new TreeNode<>(list.get(mid));
 
         fromListHelper(list, start, mid - 1, root);
@@ -38,7 +38,7 @@ public class BSTree<T extends Comparable<T>> {
         if (start.equals(end)) {
             mid = start;
         } else {
-            mid = (end - start) / 2 + start;
+            mid = (end + start) / 2;
         }
 
         TreeNode<T> nextRoot = new TreeNode<>(list.get(mid));
