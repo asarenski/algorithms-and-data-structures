@@ -47,4 +47,43 @@ public class testDLinkedList {
         Assert.assertEquals(Integer.valueOf(1), list.getHead().getValue());
         Assert.assertEquals(Integer.valueOf(20), list.getTail().getValue());
     }
+
+    @Test
+    public void testAddHead() {
+        DLinkedList<Integer> list = this.setupList(1, 20);
+        Assert.assertEquals(Integer.valueOf(1), list.getHead().getValue());
+        Assert.assertEquals(Integer.valueOf(20), list.getTail().getValue());
+
+        list.addHead(new DLinkedInteger(0));
+        Assert.assertEquals(Integer.valueOf(0), list.getHead().getValue());
+        Assert.assertEquals(Integer.valueOf(1), list.getHead().getNext().getValue());
+        Assert.assertEquals(Integer.valueOf(0), list.getHead().getNext().getPrevious().getValue());
+    }
+
+    @Test
+    public void testAddTail() {
+        DLinkedList<Integer> list = this.setupList(1, 20);
+        Assert.assertEquals(Integer.valueOf(1), list.getHead().getValue());
+        Assert.assertEquals(Integer.valueOf(20), list.getTail().getValue());
+
+        list.addTail(new DLinkedInteger(21));
+        Assert.assertEquals(Integer.valueOf(21), list.getTail().getValue());
+        Assert.assertEquals(Integer.valueOf(20), list.getTail().getPrevious().getValue());
+        Assert.assertEquals(Integer.valueOf(21), list.getTail().getPrevious().getNext().getValue());
+    }
+
+    private DLinkedList<Integer> setupList(int start, int total) {
+        DLinkedInteger head = new DLinkedInteger(start);
+        DLinkedInteger curr = head;
+
+        for (int i=start+1; i<total+1; i++) {
+            DLinkedInteger next = new DLinkedInteger(i);
+            curr.setNext(next);
+            next.setPrevious(curr);
+
+            curr = next;
+        }
+
+        return new DLinkedList<>(head);
+    }
 }
