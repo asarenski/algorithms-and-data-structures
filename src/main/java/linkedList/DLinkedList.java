@@ -3,13 +3,19 @@ package linkedList;
 public class DLinkedList<T> {
     private DLinkedNode<T> head;
     private DLinkedNode<T> tail;
+    private Integer length = 0;
 
     public DLinkedList(DLinkedNode<T> head) {
         this.head = head;
-
         this.tail = head;
+
+        if (this.head != null) {
+            length++;
+        }
+
         while (this.tail != null && this.tail.getNext() != null) {
             this.tail = this.tail.getNext();
+            length++;
         }
     }
 
@@ -19,6 +25,10 @@ public class DLinkedList<T> {
 
     public DLinkedNode<T> getTail() {
         return tail;
+    }
+
+    public Integer length() {
+        return length;
     }
 
     /**
@@ -32,6 +42,7 @@ public class DLinkedList<T> {
             if (this.tail == null) {
                 this.tail = this.head;
             }
+            length++;
             return;
         }
 
@@ -39,6 +50,7 @@ public class DLinkedList<T> {
         this.head = nextHead;
         nextHead.setNext(headCopy);
         headCopy.setPrevious(this.head);
+        length++;
     }
 
     /**
@@ -49,6 +61,7 @@ public class DLinkedList<T> {
     public void addTail(DLinkedNode<T> nextTail) {
         if (this.tail == null) {
             this.addHead(nextTail);
+            length++;
             return;
         }
 
@@ -56,6 +69,7 @@ public class DLinkedList<T> {
         this.tail = nextTail;
         tailCopy.setNext(this.tail);
         this.tail.setPrevious(tailCopy);
+        length++;
     }
 
     /**
@@ -65,13 +79,33 @@ public class DLinkedList<T> {
      * @return DLinkedNode
      */
     public DLinkedNode<T> delete(T value) {
+        if (length == 0) {
+            return null;
+        }
+
         DLinkedNode<T> found = find(value);
 
         if (found == null) {
             return null;
         }
 
-        // TODO need to use size information for edge case
+        if (length == 1) {
+            this.head = null;
+            this.tail = null;
+            length--;
+            return found;
+        }
+
+        if (length == 2) {
+            if (found == this.head) {
+                this.head = this.tail;
+            } else {
+                this.tail = this.head;
+            }
+
+            length--;
+            return found;
+        }
 
         DLinkedNode<T> prev = found.getPrevious();
         DLinkedNode<T> next = found.getNext();
@@ -79,6 +113,7 @@ public class DLinkedList<T> {
         next.setPrevious(prev);
         prev.setNext(next);
 
+        length--;
         return found;
     }
 
