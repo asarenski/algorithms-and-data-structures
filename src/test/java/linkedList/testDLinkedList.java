@@ -61,12 +61,13 @@ public class testDLinkedList {
     }
 
     @Test
-    public void testAddTail() {
+    public void testAddTail() throws Exception {
         DLinkedList<Integer> list = this.setupList(1, 20);
         Assert.assertEquals(Integer.valueOf(1), list.getHead().getValue());
         Assert.assertEquals(Integer.valueOf(20), list.getTail().getValue());
 
         list.addTail(new DLinkedInteger(21));
+
         Assert.assertEquals(Integer.valueOf(21), list.getTail().getValue());
         Assert.assertEquals(Integer.valueOf(20), list.getTail().getPrevious().getValue());
         Assert.assertEquals(Integer.valueOf(21), list.getTail().getPrevious().getNext().getValue());

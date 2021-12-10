@@ -27,6 +27,14 @@ public class DLinkedList<T> {
      * @param nextHead the node to replace the head of the list.
      */
     public void addHead(DLinkedNode<T> nextHead) {
+        if (this.head == null) {
+            this.head = nextHead;
+            if (this.tail == null) {
+                this.tail = this.head;
+            }
+            return;
+        }
+
         DLinkedNode<T> headCopy = this.head;
         this.head = nextHead;
         nextHead.setNext(headCopy);
@@ -38,7 +46,11 @@ public class DLinkedList<T> {
      *
      * @param nextTail the node to replace the tail of the list.
      */
-    public void addTail(DLinkedNode<T> nextTail) {
+    public void addTail(DLinkedNode<T> nextTail) throws Exception {
+        if (this.tail == null) {
+            throw new Exception("Please add a head before adding tail.");
+        }
+
         DLinkedNode<T> tailCopy = this.tail;
         this.tail = nextTail;
         tailCopy.setNext(this.tail);
@@ -57,6 +69,8 @@ public class DLinkedList<T> {
         if (found == null) {
             return null;
         }
+
+        // TODO need to use size information for edge case
 
         DLinkedNode<T> prev = found.getPrevious();
         DLinkedNode<T> next = found.getNext();
