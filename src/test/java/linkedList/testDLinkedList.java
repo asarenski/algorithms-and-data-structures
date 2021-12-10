@@ -61,7 +61,23 @@ public class testDLinkedList {
     }
 
     @Test
-    public void testAddTail() throws Exception {
+    public void testAddHeadWithNullHead() {
+        DLinkedList<Integer> list = new DLinkedList<>(null);
+        DLinkedInteger d1 = new DLinkedInteger(1);
+        list.addHead(d1);
+
+        Assert.assertEquals(d1, list.getHead());
+        Assert.assertEquals(d1, list.getTail());
+
+        DLinkedInteger d2 = new DLinkedInteger(5);
+        list.addHead(d2);
+
+        Assert.assertEquals(d2, list.getHead());
+        Assert.assertEquals(d1, list.getTail());
+    }
+
+    @Test
+    public void testAddTail() {
         DLinkedList<Integer> list = this.setupList(1, 20);
         Assert.assertEquals(Integer.valueOf(1), list.getHead().getValue());
         Assert.assertEquals(Integer.valueOf(20), list.getTail().getValue());
@@ -71,6 +87,22 @@ public class testDLinkedList {
         Assert.assertEquals(Integer.valueOf(21), list.getTail().getValue());
         Assert.assertEquals(Integer.valueOf(20), list.getTail().getPrevious().getValue());
         Assert.assertEquals(Integer.valueOf(21), list.getTail().getPrevious().getNext().getValue());
+    }
+
+    @Test
+    public void testAddTailWithNullHead() {
+        DLinkedList<Integer> list = new DLinkedList<>(null);
+        DLinkedInteger d1 = new DLinkedInteger(1);
+        list.addTail(d1);
+
+        Assert.assertEquals(d1, list.getHead());
+        Assert.assertEquals(d1, list.getTail());
+
+        DLinkedInteger d2 = new DLinkedInteger(5);
+        list.addTail(d2);
+
+        Assert.assertEquals(d1, list.getHead());
+        Assert.assertEquals(d2, list.getTail());
     }
 
     private DLinkedList<Integer> setupList(int start, int total) {

@@ -8,7 +8,7 @@ public class DLinkedList<T> {
         this.head = head;
 
         this.tail = head;
-        while (this.tail.getNext() != null) {
+        while (this.tail != null && this.tail.getNext() != null) {
             this.tail = this.tail.getNext();
         }
     }
@@ -46,9 +46,10 @@ public class DLinkedList<T> {
      *
      * @param nextTail the node to replace the tail of the list.
      */
-    public void addTail(DLinkedNode<T> nextTail) throws Exception {
+    public void addTail(DLinkedNode<T> nextTail) {
         if (this.tail == null) {
-            throw new Exception("Please add a head before adding tail.");
+            this.addHead(nextTail);
+            return;
         }
 
         DLinkedNode<T> tailCopy = this.tail;
