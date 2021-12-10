@@ -64,7 +64,7 @@ public class DLinkedList<T> {
      * @return DLinkedNode
      */
     public DLinkedNode<T> delete(T value) {
-        DLinkedNode<T> found = findNode(value);
+        DLinkedNode<T> found = find(value);
 
         if (found == null) {
             return null;
@@ -84,10 +84,10 @@ public class DLinkedList<T> {
     /**
      * Finds the node in O(n) time.
      *
-     * @param value the node value
+     * @param value the desired value
      * @return DLinkedNode
      */
-    private DLinkedNode<T> findNode(T value) {
+    public DLinkedNode<T> find(T value) {
         DLinkedNode<T> n = this.head;
         while (n != null) {
             if (n.getValue().equals(value)) {
@@ -96,5 +96,15 @@ public class DLinkedList<T> {
             n = n.getNext();
         }
         return null;
+    }
+
+    /**
+     * Says if the list contains the desired value in O(n) time.
+     *
+     * @param value the desired value
+     * @return
+     */
+    public Boolean contains(T value) {
+        return this.find(value) != null;
     }
 }
